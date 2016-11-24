@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Platform, ionicBootstrap} from 'ionic-angular';
+import {Platform, ionicBootstrap, MenuController} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {HomePage} from './pages/home/home';
 import {MenuTestPage} from './pages/menu-test/menu-test';
@@ -13,7 +13,7 @@ export class MyApp {
   pages: Array<{component: any, title: string, icon: string}>;
   rootPage: any = HomePage;
 
-  constructor(platform: Platform) {
+  constructor(platform: Platform, private menuCtrl: MenuController) {
 
     this.pages = [
       {component: HomePage, title: 'home', icon: 'home'},
@@ -27,9 +27,21 @@ export class MyApp {
     });
   }
 
-  openPage(page: any) : void {
+  openPage(page: any, menuSide: string) : void {
     this.rootPage = page.component;
+    this.menuCtrl.close(menuSide); //ao inves de usar o menuToggle usamos este metodo para fechar a aba menu
+  }
+
+  menuOpened() : void{
+    console.log('Abriu');
   }
 }
 
-ionicBootstrap(MyApp);
+ionicBootstrap(MyApp, [], {
+  menuType: 'push', //menuType para todas as plataformas
+  platforms: {
+    ios:  {
+      menuType: 'overlay', //aqui falamos para o menuType no iOs ser do tipo overlay
+    }
+  }
+});
