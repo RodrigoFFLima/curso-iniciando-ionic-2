@@ -4,6 +4,7 @@ import {StatusBar} from 'ionic-native';
 import {ConnectionService} from './providers/connection-service/connection-service';
 import {HomePage} from './pages/home/home';
 import {MenuTestPage} from './pages/menu-test/menu-test';
+import {AlertPage} from './pages/alert/alert';
 import {GeneratedTestPage} from './pages/generated-test/generated-test';
 
 
@@ -20,7 +21,8 @@ export class MyApp {
     this.pages = [ //array de paginas da nossa aplicação
       {component: HomePage, title: 'Home', icon: 'home'},
       {component: MenuTestPage, title: 'Menu Test', icon: 'menu'},
-      {component: GeneratedTestPage, title: 'Generated Page', icon: 'home'}
+      {component: GeneratedTestPage, title: 'Generated Page', icon: 'home'},
+      {component: AlertPage, title: 'Alert Page', icon: 'home'}
     ];
 
     platform.ready().then(() => {

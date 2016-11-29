@@ -26,6 +26,9 @@
         <ion-icon name="{{ p.icon }}"></ion-icon>
         {{ p.title }}
       </button>
+      <button ion-item *ngFor="let p of pages" (click)="openPage(p, 'alerts')">
+        Alert
+      </button>
     </ion-list>
   </ion-content>
 </ion-menu>
